@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>trexEngine</title>
+</head>
+<body>
+  <div class="menu-container">
+    <button class="menu-button">Add particle</button>
+    <select class="menu-select">
+      <option value="0">Type</option>
+      <option value="1">positive charge</option>
+      <option value="2">negative charge</option>
+      <option value="3">neutral charge</option>
+    </select>
+    <button class="menu-button">Remove particle</button>
+  </div>
+  <button id="startStop" class="menu-button">Start</button>
+  
+  <canvas id="canvas" width="480" height="300"></canvas>
+  
+  <div id="consoleOut" class="console">
+  </div>
+
+  <script type="module" src="../main.js"></script>
+</body>
+</html>
