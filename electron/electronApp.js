@@ -2,6 +2,10 @@
 // COPY PASTED CODE NO IDEA HOW IT WORKS
 // CREATES ELECTRON APP
 
+
+
+
+
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
@@ -23,7 +27,14 @@ class Main {
 
 	createWindow() {
 		// Create the browser window.
-		this.mainWindow = new BrowserWindow({width: 500, height: 500, icon: __dirname + '/trexEngineLogo.png',});
+		this.mainWindow = new BrowserWindow({
+      width: 500, 
+      height: 500, 
+      icon: __dirname + '/trexEngineLogo.png',
+      webPreferences: {
+        nodeIntegration: true
+      },
+    });
 
 		// and load the index.html of the app.
 		this.mainWindow.loadURL(url.format({
