@@ -4,6 +4,11 @@
 simple particle simulation engine
 
 
+## Requirements
+
+this program requires the following dependencies
+
+**node 16.14.0**
 
 ## Installation
 
