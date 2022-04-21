@@ -28,8 +28,8 @@ class Main {
 	createWindow() {
 		// Create the browser window.
 		this.mainWindow = new BrowserWindow({
-      width: 500, 
-      height: 500, 
+      width: 600, 
+      height: 600, 
       icon: __dirname + '/trexEngineLogo.png',
       webPreferences: {
         nodeIntegration: true

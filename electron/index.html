@@ -8,6 +8,8 @@
   <title>trexEngine</title>
 </head>
 <body>
+
+
   <div class="menu-container">
     <button class="menu-button">Add particle</button>
     <select class="menu-select">
@@ -18,8 +20,34 @@
     </select>
     <button class="menu-button">Remove particle</button>
   </div>
-  <button id="startStop" class="menu-button">Start</button>
-  
+
+
+  <div class="menu-container">
+    <button class="menu-button">Add bound</button>
+    <select class="menu-select">
+      <option value="0">Type</option>
+      <option value="1">rope</option>
+      <option value="2">stick</option>
+    </select>
+    <button class="menu-button">Remove bound</button>
+  </div>
+
+
+  <div class="menu-container">
+    <button id="startStopBtn" class="menu-button">Start</button>
+    <button id="settingsBtn" class="menu-button">Settings</button>
+  </div>
+
+
+  <div id="settings" style="display: none">
+    <input type="checkbox" id="gravity" name="settingsBox">
+    <label for="gravity">Gravity</label>
+    <input type="checkbox" id="test" name="settingsBox">
+    <label for="test">Test</label>
+  </div>
+
+
+
   <canvas id="canvas" width="480" height="300"></canvas>
   
   <div id="output" class="console">

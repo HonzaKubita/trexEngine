@@ -11,7 +11,8 @@
   border: solid 1px rgb(0, 0, 0);
   height: 100px;
   width: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-wrap: normal;
 }
 
 #canvas {
