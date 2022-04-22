@@ -2,10 +2,13 @@ import utils from './modules/utils.js'; // Module to control global application 
 import { settings } from './modules/settings.js'; // It does what it says
 import controller from './modules/controller.js'; // It does what it says
 import { render } from './modules/render.js'; // Module used for redering
+import { textures } from './modules/textures.js'; // Module for texture loading
 
 const mode = 'dev'; // enables displaying debug logs to console when set to 'dev'
 
 utils.init(mode); // Make sure app started successfully
+
+textures.init(); // Initialize textures
 
 settings.init(); // Initialize settings
 

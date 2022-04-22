@@ -14,29 +14,12 @@ export const render = {
   },
   draw(object) {
     utils.debug('Drawing object');
-    if (object.type == "particle") {
-      utils.debug('Drawing particle');
-      switch (object.charge) { // Set particle color based on charge
-        case 0:
-          this.c.fillStyle = "#545454";
-          utils.debug('neutral');
-          break;
-        case 1:
-          this.c.fillStyle = "#5e17eb";
-          utils.debug('positive');
-          break;
-        case -1:
-          this.c.fillStyle = "#38b6ff";
-          utils.debug('negative');
-          break;
-      }
-      utils.debug('Drawing object2');
-      this.c.beginPath(); // Begin drawing
-      this.c.arc(object.position.x, this.canvas.height - object.position.y, 10, 0, Math.PI * 2, false); // Draw circle
-      //this.c.arc(50, 50, 10, 0, Math.PI * 2, false); // Draw circle
-      this.c.closePath(); // Stop drawing
-      this.c.fill(); // Fill circle
-      utils.debug('Drawing done');
-    }
+    this.c.drawImage(object.texture, object.position.x, object.position.y, object.width, object.height);
+  },
+  drawMultiple(objects) {
+    utils.debug('Drawing multiple objects');
+    objects.forEach(object => {
+      this.draw(object);
+    });
   }
 }
