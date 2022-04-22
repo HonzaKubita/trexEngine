@@ -26,7 +26,7 @@ export const render = {
           utils.debug('positive');
           break;
         case -1:
-          this.c.fillStyle = "#ff1616";
+          this.c.fillStyle = "#38b6ff";
           utils.debug('negative');
           break;
       }
