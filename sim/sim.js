@@ -4,12 +4,12 @@ import { render } from '../modules/render.js';
 
 export const Sim = {
   running: false,
+  particles: [],
   start() {
     utils.log('Running simulation');
     this.running = true;
 
-    let data = settings.getData();
-    console.log(data);
+    let data = settings.getData(); // Load settings from settings menu
   },
   stop() {
     utils.log('Simulation stopped');
