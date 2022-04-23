@@ -2,10 +2,11 @@ import utils from '../modules/utils.js';
 import { settings } from '../modules/settings.js';
 import { render } from '../modules/render.js';
 import Vector from './vector.js';
-import collisions from './modifiers/collisions.js';
 
 // Modifiers
+import collisions from './modifiers/collisions.js';
 import gravity from './modifiers/gravity.js';
+import electromagneticForce from './modifiers/electromagneticForce.js';
 
 export const Sim = {
   running: false,
@@ -25,7 +26,7 @@ export const Sim = {
     console.log('Running with settings:');
     console.log(this.data);
     
-    this.gravityForce = new Vector(0, -this.data.gravityForce/100); // Create gravity force vector
+    this.gravityForce = new Vector(0, -this.data.gravityStrength/100); // Create gravity force vector
     
     utils.log('Simulation started');
     simLoop(); // Start simulation loop
@@ -53,6 +54,10 @@ function simLoop() {
   
   if (Sim.data.gravity) { // If gravity is enabled
     gravity(Sim.simObjects, Sim.gravityForce); // Apply gravity force to all objects
+  }
+
+  if (Sim.data.electromagneticForce) { // If electromagnetic force is enabled
+    electromagneticForce(Sim.simObjects, Sim.data.electromagneticForceStrength); // Apply electromagnetic force to all objects
   }
 
   // Solve collisions
