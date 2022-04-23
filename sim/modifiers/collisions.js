@@ -1,3 +1,4 @@
+import utils from '../../modules/utils.js';
 function solveWallCollisions(particles, enviroment, velocityLoose) {
   velocityLoose = (100 - velocityLoose) / 100; // Convert % to decimal. example: (60% loose = 40% keep => velocity = newVelocity * 0.4)
   particles.forEach(particle => { // Repeat for each particle
@@ -16,6 +17,16 @@ function solveWallCollisions(particles, enviroment, velocityLoose) {
   });
 }
 
+function solvePlatformCollisions(particles, platforms, velocityLoose) {
+  velocityLoose = (100 - velocityLoose) / 100; // Convert % to decimal. example: (60% loose = 40% keep => velocity = newVelocity * 0.4)
+  platforms.forEach(platform => {
+    particles.forEach(particle => {
+      
+    });
+  });
+}
+
 export default {
-  solveWallCollisions
+  solveWallCollisions,
+  solvePlatformCollisions,
 }

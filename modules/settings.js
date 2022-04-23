@@ -16,6 +16,7 @@ export const settings = {
         this.settingsDiv.style.display = 'none';
       }
     })
+    Sim.data = this.getData();
   },
   getData() {
     let data = {};

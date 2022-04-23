@@ -15,10 +15,21 @@ export const render = {
   },
   draw(object, mid = false) { // Draw object on canvas
     utils.debug('Drawing object');
-    if (mid) {
-      this.c.drawImage(object.texture, object.position.x - object.texture.width / 2, canvas.height - object.position.y - object.texture.height / 2);
+    if (object.type == 'platform' || object.type == 'connection') {
+      this.c.strokeStyle = object.color;
+      this.c.lineWidth = 10;
+      this.c.beginPath();
+      this.c.moveTo(object.position.point1.x, canvas.height - object.position.point1.y);
+      this.c.lineTo(object.position.point2.x, canvas.height - object.position.point2.y);
+      this.c.stroke();
+      this.drawCircle(object.position.point1, 10, object.color);
+      this.drawCircle(object.position.point2, 10, object.color);
     } else {
-      this.c.drawImage(object.texture, object.position.x, canvas.height - object.position.y);
+      if (mid) {
+        this.c.drawImage(object.texture, object.position.x - object.texture.width / 2, canvas.height - object.position.y - object.texture.height / 2);
+      } else {
+        this.c.drawImage(object.texture, object.position.x, canvas.height - object.position.y);
+      }
     }
   },
   drawMultiple(objects, mid = false) {
@@ -28,7 +39,8 @@ export const render = {
     });
   },
   drawVector(object) {
-    this.c.strokeStyle = '#ff0000';
+    this.c.strokeStyle = '#00ff00';
+    this.c.lineWidth = 2;
     let dx = object.position.x + object.velocity.x * 10
     let dy = canvas.height - object.position.y - object.velocity.y * 10
     this.c.beginPath();
@@ -45,5 +57,18 @@ export const render = {
   
     this.drawMultiple(Sim.simObjects.connections); // Draw connections
     this.drawMultiple(Sim.simObjects.particles, true); // Draw particles
+    this.drawMultiple(Sim.simObjects.platforms); // Draw platforms
+
+    if (Sim.data.showVectors) { // If showVectors is enabled
+      Sim.simObjects.particles.forEach(particle => {
+        render.drawVector(particle); // Display particle velocity vector as line
+      });
+    }
+  },
+  drawCircle(position, radius, color) {
+    this.c.beginPath();
+    this.c.arc(position.x, canvas.height - position.y, radius, 0, 2 * Math.PI);
+    this.c.fillStyle = color;
+    this.c.fill();
   }
 }

@@ -7,11 +7,13 @@ import Vector from './vector.js';
 import collisions from './modifiers/collisions.js';
 import gravity from './modifiers/gravity.js';
 import electromagneticForce from './modifiers/electromagneticForce.js';
+import { connectionModifier } from './modifiers/connections.js';
 
 export const Sim = {
   running: false,
   simObjects: {
     particles: [],
+    platforms: [],
     connections: [],
   },
   addObject(object) { // Function for adding new objects to simulation
@@ -46,6 +48,7 @@ export const Sim = {
     }
     this.simObjects = { // Clear all objects
       particles: [],
+      platforms: [],
       connections: [],
     };
     render.clear(); // Clear cavnas
@@ -65,9 +68,13 @@ function simLoop() {
     electromagneticForce(Sim.simObjects, Sim.data.electromagneticForceStrength); // Apply electromagnetic force to all objects
   }
 
+  connectionModifier(Sim.simObjects); // Apply connection modifier to all particles
+
   // Solve collisions
 
   collisions.solveWallCollisions(Sim.simObjects.particles, render.canvas, Sim.velocityLoose); // Solve collisions between particles and walls
+  //collisions.solveParticleCollisions(Sim.simObjects.particles, Sim.velocityLoose)
+  collisions.solvePlatformCollisions(Sim.simObjects.particles, Sim.simObjects.platforms, Sim.velocityLoose); // Solve collisions between particles and platforms
   
   // Update
   
@@ -77,14 +84,6 @@ function simLoop() {
 
   // Render
   render.renderSim(); // Render simulation
-
-  if (Sim.data.showVectors) { // If showVectors is enabled
-    Sim.simObjects.particles.forEach(particle => {
-      render.drawVector(particle); // Display particle velocity vector as line
-    });
-  }
-
-
 
   // Loop
 
