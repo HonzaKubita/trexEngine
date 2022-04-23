@@ -37,13 +37,13 @@ function particleManager() {
   addParticle.addEventListener('click', () => {
     let particleType = particleSelect.options[particleSelect.selectedIndex].value;
     if (particleType == 'e') {
-      utils.log('Added electron');
+      utils.log('Added negatively charged particle');
       Sim.addObject(new Particle(50, 450, 'e'));
     } else if (particleType == 'p') {
-      utils.log('Added proton');
+      utils.log('Added positively charged particle');
       Sim.addObject(new Particle(100, 450, 'p'));
     } else if (particleType == 'n') {
-      utils.log('Added neutron');
+      utils.log('Added neutrally charged particle');
       Sim.addObject(new Particle(150, 450, 'n'));
     }
   })

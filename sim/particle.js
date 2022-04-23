@@ -6,7 +6,7 @@ export class Particle {
     x: 0,
     y: 0
   };
-  velocity = new Vector(2, 0); // Velocity in 2D space
+  velocity = new Vector(0, 0); // Velocity in 2D space
   constructor(x, y, charge) {
     this.texture = textures[charge];
     this.height = this.texture.height;
