@@ -27,6 +27,11 @@ export const Sim = {
     console.log(this.data);
     
     this.gravityForce = new Vector(0, -this.data.gravityStrength/100); // Create gravity force vector
+
+    this.velocityLoose = 0; // Zero % loss of velocity
+    if (!this.data.infiniteVelocity) { // If infinite velocity is enabled
+      this.velocityLoose = 10; // How much velocity is lost when colliding with walls in percents
+    }
     
     utils.log('Simulation started');
     simLoop(); // Start simulation loop
@@ -62,7 +67,7 @@ function simLoop() {
 
   // Solve collisions
 
-  collisions.solveWallCollisions(Sim.simObjects.particles, render.canvas); // Solve collisions between particles and walls
+  collisions.solveWallCollisions(Sim.simObjects.particles, render.canvas, Sim.velocityLoose); // Solve collisions between particles and walls
   
   // Update
   

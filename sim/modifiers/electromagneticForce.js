@@ -8,10 +8,11 @@ export default function electromagneticForce(objects, force) {
   objects.particles.forEach(particle => {
     objects.particles.forEach(otherParticle => {
       if (particle !== otherParticle && particle.charge !== 'n' && otherParticle.charge !== 'n') { // Calculate only for electrons and protons
-        const distance = calcDistance(particle.position, otherParticle.position);
+        let distance = calcDistance(particle.position, otherParticle.position);
         let forceVector = Vector.fromPositions(particle.position, otherParticle.position);
         forceVector = forceVector.normalize();
         forceVector = forceVector.multiply(force);
+        forceVector = forceVector.divide(distance);
         if (particle.charge !== otherParticle.charge) {
           // Particles have different charges so they attract each other
           particle.velocity = Vector.add(particle.velocity, forceVector);
