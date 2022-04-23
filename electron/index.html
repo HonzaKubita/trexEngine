@@ -23,36 +23,58 @@
 
 
   <div class="menu-container">
-    <button id="addBound" class="menu-button">Add bound</button>
-    <select id="boundType" class="menu-select">
+    <button id="addConnection" class="menu-button">Add connection</button>
+    <select id="ConnectionType" class="menu-select">
       <option value="type">Type</option>
       <option value="rope">rope</option>
       <option value="stick">stick</option>
     </select>
-    <button id="removeBound" class="menu-button">Remove bound</button>
+    <button id="removeConnection" class="menu-button">Remove connection</button>
   </div>
 
 
   <div class="menu-container">
     <button id="startStopBtn" class="menu-button">Start</button>
+    <button id="resetBtn" class="menu-button">Reset</button>
     <button id="settingsBtn" class="menu-button">Settings</button>
   </div>
 
+  <div id="settings" class="settings-container">
 
-  <div id="settings" style="display: none">
-    <input type="checkbox" id="gravity" name="settingsBox">
-    <label for="gravity">Gravity</label>
-    <input type="checkbox" id="test" name="settingsBox">
-    <label for="test">Test</label>
+    <div>
+      <input type="checkbox" id="electromagneticForce" name="settingsModifier" checked>
+      <label for="electromagneticForce">Electromagnetic force</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="gravity" name="settingsModifier">
+      <label for="gravity">Gravity</label>
+    </div>
+
+    <div>
+      <input type="number" id="gravityForce" name="settingsModifier" style="width: fit-content;">
+      <label for="gravityForce">Gravity force</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="showVectors" name="settingsModifier">
+      <label for="showVectors">Show vectors</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="test" name="settingsModifier">
+      <label for="test">Test</label>
+    </div>
   </div>
 
 
 
-  <canvas id="canvas" width="480" height="300"></canvas>
+  <canvas id="canvas" width="480" height="480"></canvas>
   
   <div id="output" class="console">
     App failed to start.
   </div>
+  <button id="clearConsole" class="menu-button">Clear console</button>
 
   <script type="module" src="../main.js"></script>
 </body>

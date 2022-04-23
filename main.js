@@ -4,7 +4,7 @@ import controller from './modules/controller.js'; // It does what it says
 import { render } from './modules/render.js'; // Module used for redering
 import { textures } from './modules/textures.js'; // Module for texture loading
 
-const mode = 'dev'; // enables displaying debug logs to console when set to 'dev'
+const mode = 'test'; // enables displaying debug logs to console when set to 'dev'
 
 utils.init(mode); // Make sure app started successfully
 
@@ -16,4 +16,4 @@ controller.init(); // Initialize controller
 
 render.mount('canvas'); // Mount canvas to rendering module
 
-render.clear();
+render.clear(); // Clear canvas

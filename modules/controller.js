@@ -1,21 +1,34 @@
 import { Particle } from '../sim/particle.js';
 import { Sim } from '../sim/sim.js';
 import utils from '../modules/utils.js';
-import { render } from '../modules/render.js';
+import { settings } from '../modules/settings.js';
+
 
 let startStopBtn = document.getElementById('startStopBtn');
+let resetSimBtn = document.getElementById('resetBtn');
 
 
 function startStop() {
   startStopBtn.addEventListener('click', () => {
     if (Sim.running) {
-      startStopBtn.innerHTML = 'Start';
+      startStopBtn.innerHTML = 'Resume';
       Sim.stop();
+      settings.enable(); // After simulation is started, disable settings menu
     } else {
-      startStopBtn.innerHTML = 'Stop';
+      startStopBtn.innerHTML = 'Pause';
       Sim.start();
+      settings.disable();
     }
   })
+}
+
+function resetSim() {
+  resetSimBtn.addEventListener('click', () => {
+    if (!Sim.running) {
+      Sim.reset();
+      startStopBtn.innerHTML = 'Start';
+    }
+  });
 }
 
 function particleManager() {
@@ -24,14 +37,14 @@ function particleManager() {
   addParticle.addEventListener('click', () => {
     let particleType = particleSelect.options[particleSelect.selectedIndex].value;
     if (particleType == 'e') {
-      utils.log('Adding electron');
-      Sim.addObject(new Particle(50, 50, 'e'));
+      utils.log('Added electron');
+      Sim.addObject(new Particle(50, 450, 'e'));
     } else if (particleType == 'p') {
-      utils.log('Adding proton');
-      Sim.addObject(new Particle(100, 50, 'p'));
+      utils.log('Added proton');
+      Sim.addObject(new Particle(100, 450, 'p'));
     } else if (particleType == 'n') {
-      utils.log('Adding neutron');
-      Sim.addObject(new Particle(150, 50, 'n'));
+      utils.log('Added neutron');
+      Sim.addObject(new Particle(150, 450, 'n'));
     }
   })
 }
@@ -39,6 +52,7 @@ function particleManager() {
 const init = () => {
   startStop();
   particleManager();
+  resetSim();
 }
 
 export default {
