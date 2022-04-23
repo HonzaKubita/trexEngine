@@ -9,14 +9,15 @@
 </head>
 <body>
 
+  <canvas id="canvas" width="480" height="480"></canvas>
 
   <div class="menu-container">
     <button id="addParticle" class="menu-button">Add particle</button>
     <select id="particleType" class="menu-select">
-      <option value="type">Type</option>
-      <option value="e">electron</option>
-      <option value="p">proton</option>
-      <option value="n">neutron</option>
+      <option value="type">Charge</option>
+      <option value="e">Negative charge</option>
+      <option value="p">Positive charge</option>
+      <option value="n">Neutral charge</option>
     </select>
     <button id="removeParticle" class="menu-button">Remove particle</button>
   </div>
@@ -26,8 +27,8 @@
     <button id="addConnection" class="menu-button">Add connection</button>
     <select id="ConnectionType" class="menu-select">
       <option value="type">Type</option>
-      <option value="rope">rope</option>
-      <option value="stick">stick</option>
+      <option value="rope">Rope</option>
+      <option value="stick">Stick</option>
     </select>
     <button id="removeConnection" class="menu-button">Remove connection</button>
   </div>
@@ -73,10 +74,6 @@
       <label for="infineteVelocity">Infinite velocity</label>
     </div>
   </div>
-
-
-
-  <canvas id="canvas" width="480" height="480"></canvas>
   
   <div id="output" class="console">
     App failed to start.

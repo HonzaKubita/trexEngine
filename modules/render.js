@@ -1,4 +1,5 @@
 import utils from './utils.js';
+import { Sim } from '../sim/sim.js';
 
 export const render = {
   canvas: "", // Canvas object
@@ -37,5 +38,12 @@ export const render = {
     this.c.font = "15px Arial";
     let speed = object.velocity.magnitude().toString()
     this.c.fillText(speed.slice(0, speed.indexOf('.') + 2), dx, dy);
+  },
+
+  renderSim() {
+    this.clear(); // Clear canvas
+  
+    this.drawMultiple(Sim.simObjects.connections); // Draw connections
+    this.drawMultiple(Sim.simObjects.particles, true); // Draw particles
   }
 }

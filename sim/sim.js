@@ -76,10 +76,7 @@ function simLoop() {
   });
 
   // Render
-  render.clear(); // Clear canvas
-  
-  render.drawMultiple(Sim.simObjects.connections); // Draw connections
-  render.drawMultiple(Sim.simObjects.particles, true); // Draw particles
+  render.renderSim(); // Render simulation
 
   if (Sim.data.showVectors) { // If showVectors is enabled
     Sim.simObjects.particles.forEach(particle => {
