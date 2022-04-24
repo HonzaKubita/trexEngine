@@ -16,11 +16,13 @@ export const dataModifier = {
     newHTML = '';
 
     objectType.innerHTML = 'Nothing selected';
+    applyBtn.style.display = 'none';
 
 
     Sim.simObjects.particles.forEach(particle => {
       if (particle.selected) {
         objectType.innerHTML = 'Particle data:';
+        applyBtn.style.display = 'block';
         console.log(particle)
         for (const property in particle) {
           if (!uneditable.includes(property)) {
