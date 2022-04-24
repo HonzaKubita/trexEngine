@@ -1,6 +1,7 @@
 import { Particle } from '../sim/particle.js';
 import { Platform } from '../sim/platform.js';
 import { Connection } from '../sim/connection.js';
+import { dataModifier } from './dataModifier.js'
 
 import { Sim } from '../sim/sim.js';
 import utils from '../modules/utils.js';
@@ -22,6 +23,7 @@ function startStop() {
       Sim.start();
       settings.disable();
     }
+    dataModifier.update();
   })
 }
 

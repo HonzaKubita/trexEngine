@@ -70,7 +70,9 @@ function modifyData(object, element) {
   if (element.nodeName == 'INPUT') {
     if (element.type == 'checkbox') {
       object[element.id] = element.checked;
-    } else if (element.type == 'number' || element.type == 'text' || element.type == 'select' || element.type == 'radio') {
+    } else if (element.type == 'number' || element.type == 'radio') {
+      object[element.id] = Number(element.value);
+    } else if (element.type == 'text' || element.type == 'select') {
       object[element.id] = element.value;
     }
   } else if (element.nodeName == 'DIV') {
