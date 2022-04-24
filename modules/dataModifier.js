@@ -1,13 +1,19 @@
 import { Sim } from '../sim/sim.js';
+import { render } from './render.js';
 
-const uneditable = ['type', 'texture', 'height', 'width', 'selected'];
+const uneditable = ['type', 'height', 'width', 'selected'];
 const dataModifierDiv = document.getElementById('objectData');
 const objectType = document.getElementById('objectType');
+
+const applyBtn = document.getElementById('applyData');
+
+let newHTML = ''
 
 export const dataModifier = {
   update() {
 
     dataModifierDiv.innerHTML = '';
+    newHTML = '';
 
     objectType.innerHTML = 'Nothing selected';
 
@@ -15,6 +21,7 @@ export const dataModifier = {
     Sim.simObjects.particles.forEach(particle => {
       if (particle.selected) {
         objectType.innerHTML = 'Particle data:';
+        console.log(particle)
         for (const property in particle) {
           if (!uneditable.includes(property)) {
             generateDataModifier(particle, property);
@@ -22,22 +29,53 @@ export const dataModifier = {
         }
       }
     });
+    dataModifierDiv.innerHTML = newHTML;
+  },
+  init() {
+    applyBtn.addEventListener('click', () => {
+      applyData();
+      render.renderSim();
+    })
   }
 }
 
 function generateDataModifier(particle, property) {
   if (typeof particle[property] == 'boolean') {
-    dataModifierDiv.innerHTML += `<div class="dataModifier">${property}: <input type="checkbox" id="${property}" ${particle[property] ? 'checked' : ''}></div>`;
+    newHTML += `${property}: <input name="dataModifier" type="checkbox" id="${property}" ${particle[property] ? 'checked' : ''}><br>`;
   } 
   else if (typeof particle[property] == 'number') {
-    dataModifierDiv.innerHTML += `<div class="dataModifier">${property}: <input type="number" id="${property}" value="${particle[property]}"></div>`;
+    newHTML += `${property}: <input name="dataModifier" type="number" id="${property}" value="${particle[property]}"><br>`;
   }
   else if (typeof particle[property] == 'string') {
-    dataModifierDiv.innerHTML += `<div class="dataModifier">${property}: <input type="text" id="${property}" value="${particle[property]}"></div>`;
+    newHTML += `${property}: <input name="dataModifier" type="text" id="${property}" value="${particle[property]}"><br>`;
   } else if (typeof particle[property] == 'object') {
-    dataModifierDiv.innerHTML += `<div>${property}:</div>`;
+    newHTML += `<div name="dataModifier", id="${property}">${property}:<br>`;
     for (const subProperty in particle[property]) {
-      generateDataModifier(particle[property], subProperty);
+      generateDataModifier(particle[property], subProperty);  
+    }
+    newHTML += '</div>';
+  }
+}
+
+function applyData() {
+  let dataModifierE = document.getElementById('objectData').children
+  let selectedParticle = Sim.simObjects.particles.filter(particle => particle.selected)[0];
+
+  for (let i = 0; i < dataModifierE.length; i++) {
+    modifyData(selectedParticle, dataModifierE[i]);
+  }
+}
+
+function modifyData(object, element) {
+  if (element.nodeName == 'INPUT') {
+    if (element.type == 'checkbox') {
+      object[element.id] = element.checked;
+    } else if (element.type == 'number' || element.type == 'text' || element.type == 'select' || element.type == 'radio') {
+      object[element.id] = element.value;
+    }
+  } else if (element.nodeName == 'DIV') {
+    for (let i = 0; i < element.children.length; i++) {
+      modifyData(object[element.id], element.children[i]);
     }
   }
 }

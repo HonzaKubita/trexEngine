@@ -1,5 +1,6 @@
 import utils from './utils.js';
 import { Sim } from '../sim/sim.js';
+import { textures } from './textures.js'
 
 export const render = {
   canvas: "", // Canvas object
@@ -29,9 +30,9 @@ export const render = {
         this.drawOutline(object);
       }
       if (mid) {
-        this.c.drawImage(object.texture, object.position.x - object.texture.width / 2, canvas.height - object.position.y - object.texture.height / 2);
+        this.c.drawImage(textures[object.charge], object.position.x - object.width / 2, canvas.height - object.position.y - object.height / 2);
       } else {
-        this.c.drawImage(object.texture, object.position.x, canvas.height - object.position.y);
+        this.c.drawImage(textures[object.charge], object.position.x, canvas.height - object.position.y);
       }
     }
   },

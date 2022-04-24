@@ -5,6 +5,7 @@ import { render } from './modules/render.js'; // Module used for redering
 import { textures } from './modules/textures.js'; // Module for texture loading
 import { drag } from './modules/drag.js'; // Module for dragging particles before simulation
 import { selector } from './modules/selector.js'; // Module for selecting objects in simulation
+import { dataModifier } from './modules/dataModifier.js';
 
 const mode = 'test'; // enables displaying debug logs to console when set to 'dev'
 
@@ -23,3 +24,5 @@ render.clear(); // Clear canvas
 drag.init(render.canvas); // Initialize drag module on canvas which is mounted to rendering module
 
 selector.init(canvas); // Initialize selector module on canvas which is mounted to rendering module
+
+dataModifier.init(); // Initialize dataModifier module
