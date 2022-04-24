@@ -4,6 +4,7 @@ import controller from './modules/controller.js'; // It does what it says
 import { render } from './modules/render.js'; // Module used for redering
 import { textures } from './modules/textures.js'; // Module for texture loading
 import { drag } from './modules/drag.js'; // Module for dragging particles before simulation
+import { selector } from './modules/selector.js'; // Module for selecting objects in simulation
 
 const mode = 'test'; // enables displaying debug logs to console when set to 'dev'
 
@@ -20,3 +21,5 @@ render.mount('canvas'); // Mount canvas to rendering module
 render.clear(); // Clear canvas
 
 drag.init(render.canvas); // Initialize drag module on canvas which is mounted to rendering module
+
+selector.init(canvas); // Initialize selector module on canvas which is mounted to rendering module

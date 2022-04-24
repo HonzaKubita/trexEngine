@@ -37,6 +37,8 @@ function resetSim() {
 function particleManager() {
   let particleSelect = document.getElementById('particleType');
   let addParticle = document.getElementById('addParticle');
+  let removeParticle = document.getElementById('removeParticle');
+
   addParticle.addEventListener('click', () => {
     let particleType = particleSelect.options[particleSelect.selectedIndex].value;
     if (particleType == 'e') {
@@ -50,6 +52,12 @@ function particleManager() {
       Sim.addObject(new Particle(150, 450, 'n'));
     }
   })
+
+  removeParticle.addEventListener('click', () => {
+    let selectedParticle = Sim.simObjects.particles.filter(particle => particle.selected)[0];
+    Sim.removeObject(selectedParticle);
+    utils.log('Removed particle');
+  });
 }
 
 function platformManager() {

@@ -18,7 +18,11 @@ export const Sim = {
   },
   addObject(object) { // Function for adding new objects to simulation
     this.simObjects[`${object.type}s`].push(object);
-    render.draw(object, true);
+    render.renderSim();
+  },
+  removeObject(object) { // Function for removing objects from simulation
+    this.simObjects[`${object.type}s`].splice(this.simObjects[`${object.type}s`].indexOf(object), 1);
+    render.renderSim();
   },
   start() {
     this.running = true; // Mark sumulation as running
@@ -58,6 +62,13 @@ export const Sim = {
 
 function simLoop() {
 
+  // Solve collisions
+
+  collisions.solveWallCollisions(Sim.simObjects.particles, render.canvas, Sim.velocityLoose); // Solve collisions between particles and walls
+  //collisions.solveParticleCollisions(Sim.simObjects.particles, Sim.velocityLoose)
+  //collisions.solvePlatformCollisions(Sim.simObjects.particles, Sim.simObjects.platforms, Sim.velocityLoose); // Solve collisions between particles and platforms
+  
+  
   // Calculate modifiers
   
   if (Sim.data.gravity) { // If gravity is enabled
@@ -70,11 +81,6 @@ function simLoop() {
 
   connectionModifier(Sim.simObjects); // Apply connection modifier to all particles
 
-  // Solve collisions
-
-  collisions.solveWallCollisions(Sim.simObjects.particles, render.canvas, Sim.velocityLoose); // Solve collisions between particles and walls
-  //collisions.solveParticleCollisions(Sim.simObjects.particles, Sim.velocityLoose)
-  collisions.solvePlatformCollisions(Sim.simObjects.particles, Sim.simObjects.platforms, Sim.velocityLoose); // Solve collisions between particles and platforms
   
   // Update
   

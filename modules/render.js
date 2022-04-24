@@ -24,7 +24,10 @@ export const render = {
       this.c.stroke();
       this.drawCircle(object.position.point1, 10, object.color);
       this.drawCircle(object.position.point2, 10, object.color);
-    } else {
+    } else if (object.type == 'particle') {
+      if (object.selected && !Sim.running) {
+        this.drawOutline(object);
+      }
       if (mid) {
         this.c.drawImage(object.texture, object.position.x - object.texture.width / 2, canvas.height - object.position.y - object.texture.height / 2);
       } else {
@@ -64,11 +67,28 @@ export const render = {
         render.drawVector(particle); // Display particle velocity vector as line
       });
     }
+
+    // Sim.simObjects.particles.forEach(particle => { // Draw particle outlines
+    //   if (particle.selected) {
+    //     this.drawOutline(particle)
+    //   }
+    // });
   },
   drawCircle(position, radius, color) {
     this.c.beginPath();
     this.c.arc(position.x, canvas.height - position.y, radius, 0, 2 * Math.PI);
     this.c.fillStyle = color;
     this.c.fill();
+  },
+  drawOutline(object) {
+    this.c.strokeStyle = '#ff0000';
+    this.c.lineWidth = 3;
+    if (object.type == 'particle') {
+      let x = object.position.x - object.width / 2;
+      let y = canvas.height - object.position.y - object.height / 2;
+      this.c.beginPath();
+      this.c.rect(x, y, object.width, object.height);
+      this.c.stroke();
+    }
   }
 }

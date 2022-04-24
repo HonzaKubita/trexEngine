@@ -1,5 +1,6 @@
 
 import { Sim } from '../sim/sim.js';
+import utils from '../modules/utils.js'
 export class Connection {
   type = 'connection';
   position = {
@@ -31,5 +32,6 @@ export class Connection {
         this.connectedTo.point2 = particle;
       }
     });
+    this.length = utils.calcDistance(this.position.point1, this.position.point2);
   }
 }
