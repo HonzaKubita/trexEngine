@@ -8,90 +8,98 @@
   <title>trexEngine</title>
 </head>
 <body>
-
-  <canvas id="canvas" width="480" height="480"></canvas>
-
-  <div class="menu-container">
-    <button id="addParticle" class="menu-button">Add particle</button>
-    <select id="particleType" class="menu-select">
-      <option value="type">Charge</option>
-      <option value="e">Negative charge</option>
-      <option value="p">Positive charge</option>
-      <option value="n">Neutral charge</option>
-    </select>
-    <button id="removeParticle" class="menu-button">Remove particle</button>
+  <div class="main-container">
+    <canvas id="canvas" width="480" height="480"></canvas>
+  
+    <div>
+      <div class="menu-container">
+        <button id="addParticle" class="menu-button">Add particle</button>
+        <select id="particleType" class="menu-select">
+          <option value="type">Charge</option>
+          <option value="e">Negative charge</option>
+          <option value="p">Positive charge</option>
+          <option value="n">Neutral charge</option>
+        </select>
+        <button id="removeParticle" class="menu-button">Remove particle</button>
+      </div>
+    
+    
+      <div class="menu-container">
+        <button id="addConnection" class="menu-button">Add connection</button>
+        <select id="connectionType" class="menu-select">
+          <option value="type">Type</option>
+          <option value="rubber">Rubber</option>
+          <option value="rope">Rope</option>
+          <option value="stick">Stick</option>
+        </select>
+        <button id="removeConnection" class="menu-button">Remove connection</button>
+      </div>
+    
+    
+      <div class="menu-container">
+        <button id="addPlatform" class="menu-button">Add platform</button>
+        <select id="platformType" class="menu-select">
+          <option value="type">Type</option>
+          <option value="bouncy">Bouncy</option>
+          <option value="stiff">Stiff</option>
+        </select>
+        <button id="removePlatform" class="menu-button">Remove platform</button>
+      </div>
+    
+    
+      <div class="menu-container">
+        <button id="startStopBtn" class="menu-button">Start</button>
+        <button id="resetBtn" class="menu-button">Reset</button>
+        <button id="settingsBtn" class="menu-button">Settings</button>
+      </div>
+    
+    
+      <div style="display: flex; flex-direction: column;">
+        <p id="objectType">Nothing selected</p>
+        <div id="objectData">
+          <button id="applyData" class="menu-button">Apply</button>
+        </div>
+      </div>
+    
+    
+      <div id="settings" class="settings-container">
+    
+        <div>
+          <input type="checkbox" id="electromagneticForce" name="settingsModifier" checked>
+          <label for="electromagneticForce">Electromagnetic force</label>
+        </div>
+    
+        <div>
+          <input type="number" id="electromagneticForceStrength" name="settingsModifier" value="25" style="width: fit-content;">
+          <label for="electromagneticForceStrength">Electromagnetic force strength</label>
+        </div>
+    
+    
+        <div>
+          <input type="checkbox" id="gravity" name="settingsModifier">
+          <label for="gravity">Gravity</label>
+        </div>
+    
+        <div>
+          <input type="number" id="gravityStrength" name="settingsModifier" value="10" style="width: fit-content;">
+          <label for="gravityStrength">Gravity strength</label>
+        </div>
+    
+    
+        <div>
+          <input type="checkbox" id="showVectors" name="settingsModifier">
+          <label for="showVectors">Show vectors</label>
+        </div>
+    
+        <div>
+          <input type="checkbox" id="infiniteVelocity" name="settingsModifier" checked>
+          <label for="infineteVelocity">Infinite velocity</label>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-  <div class="menu-container">
-    <button id="addConnection" class="menu-button">Add connection</button>
-    <select id="connectionType" class="menu-select">
-      <option value="type">Type</option>
-      <option value="rubber">Rubber</option>
-      <option value="rope">Rope</option>
-      <option value="stick">Stick</option>
-    </select>
-    <button id="removeConnection" class="menu-button">Remove connection</button>
-  </div>
-
-
-  <div class="menu-container">
-    <button id="addPlatform" class="menu-button">Add platform</button>
-    <select id="platformType" class="menu-select">
-      <option value="type">Type</option>
-      <option value="bouncy">Bouncy</option>
-      <option value="stiff">Stiff</option>
-    </select>
-    <button id="removePlatform" class="menu-button">Remove platform</button>
-  </div>
-
-
-  <div class="menu-container">
-    <button id="startStopBtn" class="menu-button">Start</button>
-    <button id="resetBtn" class="menu-button">Reset</button>
-    <button id="settingsBtn" class="menu-button">Settings</button>
-  </div>
-
-
-  <div id="objectData">
-    <p id="objectType">Nothing selected</p>
-  </div>
-
-
-  <div id="settings" class="settings-container">
-
-    <div>
-      <input type="checkbox" id="electromagneticForce" name="settingsModifier" checked>
-      <label for="electromagneticForce">Electromagnetic force</label>
-    </div>
-
-    <div>
-      <input type="number" id="electromagneticForceStrength" name="settingsModifier" value="25" style="width: fit-content;">
-      <label for="electromagneticForceStrength">Electromagnetic force strength</label>
-    </div>
-
-
-    <div>
-      <input type="checkbox" id="gravity" name="settingsModifier">
-      <label for="gravity">Gravity</label>
-    </div>
-
-    <div>
-      <input type="number" id="gravityStrength" name="settingsModifier" value="10" style="width: fit-content;">
-      <label for="gravityStrength">Gravity strength</label>
-    </div>
-
-
-    <div>
-      <input type="checkbox" id="showVectors" name="settingsModifier">
-      <label for="showVectors">Show vectors</label>
-    </div>
-
-    <div>
-      <input type="checkbox" id="infiniteVelocity" name="settingsModifier" checked>
-      <label for="infineteVelocity">Infinite velocity</label>
-    </div>
-  </div>
   
   <div id="output" class="console">
     App failed to start.

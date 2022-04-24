@@ -2,6 +2,7 @@ import { textures } from '../modules/textures.js';
 import Vector from './vector.js';
 export class Particle {
   type = 'particle';
+  fixed = false;
   position = { // Position in 2D space
     x: 0,
     y: 0
@@ -16,7 +17,9 @@ export class Particle {
     this.charge = charge; // Particle type (neutron/proton/electron)
   }
   update() {
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
+    if (!this.fixed) {
+      this.position.x += this.velocity.x;
+      this.position.y += this.velocity.y;
+    }
   }
 }

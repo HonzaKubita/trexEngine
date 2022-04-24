@@ -18,8 +18,12 @@ function rubber(connection) {
     forceVector = forceVector.normalize();
     forceVector = forceVector.multiply(distance);
     forceVector = forceVector.divide(connection.length);
-    connection.connectedTo.point1.velocity = Vector.add(connection.connectedTo.point1.velocity, forceVector);
-    connection.connectedTo.point2.velocity = Vector.subtract(connection.connectedTo.point2.velocity, forceVector);
+    if (!connection.connectedTo.point1.fixed) {
+      connection.connectedTo.point1.velocity = Vector.add(connection.connectedTo.point1.velocity, forceVector);
+    }
+    if (!connection.connectedTo.point2.fixed) {
+      connection.connectedTo.point2.velocity = Vector.subtract(connection.connectedTo.point2.velocity, forceVector);
+    }
   }
 }
 
@@ -27,5 +31,5 @@ function stick(connection) {
   let particleVector1 = connection.connectedTo.point1.velocity;
   let particleVector2 = connection.connectedTo.point2.velocity;
   connection.connectedTo.point1.velocity = Vector.subtract(particleVector1, particleVector2);
-  connection.connectedTo.point2.velocity = Vector.subtract(particleVector2, particleVector1);
+  connection.connectedTo.point2.velocity = Vector.subtract(particleVector1, particleVector2);
 }
