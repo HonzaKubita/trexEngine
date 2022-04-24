@@ -17,12 +17,27 @@ export const dataModifier = {
         objectType.innerHTML = 'Particle data:';
         for (const property in particle) {
           if (!uneditable.includes(property)) {
-            const div = document.createElement('div');
-            div.innerHTML = `${property}: ${particle[property]}`;
-            dataModifierDiv.appendChild(div);
+            generateDataModifier(particle, property);
           }
         }
       }
     });
+  }
+}
+
+function generateDataModifier(particle, property) {
+  if (typeof particle[property] == 'boolean') {
+    dataModifierDiv.innerHTML += `<div class="dataModifier">${property}: <input type="checkbox" id="${property}" ${particle[property] ? 'checked' : ''}></div>`;
+  } 
+  else if (typeof particle[property] == 'number') {
+    dataModifierDiv.innerHTML += `<div class="dataModifier">${property}: <input type="number" id="${property}" value="${particle[property]}"></div>`;
+  }
+  else if (typeof particle[property] == 'string') {
+    dataModifierDiv.innerHTML += `<div class="dataModifier">${property}: <input type="text" id="${property}" value="${particle[property]}"></div>`;
+  } else if (typeof particle[property] == 'object') {
+    dataModifierDiv.innerHTML += `<div>${property}:</div>`;
+    for (const subProperty in particle[property]) {
+      generateDataModifier(particle[property], subProperty);
+    }
   }
 }
