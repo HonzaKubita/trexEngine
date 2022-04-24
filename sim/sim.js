@@ -74,13 +74,12 @@ function simLoop() {
   if (Sim.data.gravity) { // If gravity is enabled
     gravity(Sim.simObjects, Sim.gravityForce); // Apply gravity force to all objects
   }
-
+  
   if (Sim.data.electromagneticForce) { // If electromagnetic force is enabled
     electromagneticForce(Sim.simObjects, Sim.data.electromagneticForceStrength); // Apply electromagnetic force to all objects
   }
-
+  
   connectionModifier(Sim.simObjects); // Apply connection modifier to all particles
-
   
   // Update
   

@@ -20,8 +20,10 @@ export class Connection {
     this.length = length;
     if (connectionType == 'rubber') {
       this.color = '#2e2e2e';
+    } else if (connectionType == 'stick') {
+      this.color = '#693b00';
     } else {
-      this.color = '#00ffff';
+      this.color = '#0000ff';
     }
   }
   update() {
