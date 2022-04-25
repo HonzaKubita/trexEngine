@@ -16,6 +16,9 @@ export default function connectionMenu() {
     } else if (connectionType == 'stick') {
       utils.log('Added stick connection');
       Sim.addObject(new Connection(300, 50, 400, 50, 'stick'));
+    } else if (connectionType == 'spring') {
+      utils.log('Added spring connection');
+      Sim.addObject(new Connection(300, 25, 400, 15, 'spring'));
     }
   });
 }
