@@ -22,6 +22,8 @@ export class Connection {
       this.color = '#2e2e2e';
     } else if (connectionType == 'stick') {
       this.color = '#693b00';
+    } else if (connectionType == 'spring') {
+      this.color = '#758275';
     } else {
       this.color = '#0000ff';
     }
