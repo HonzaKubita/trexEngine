@@ -1,3 +1,5 @@
+import Vector from '../../vector.js';
+
 export default function solvePlatformCollisions(particles, platforms, velocityLoose) {
   velocityLoose = (100 - velocityLoose) / 100; // Convert % to decimal. example: (60% loose = 40% keep => velocity = newVelocity * 0.4)
   platforms.forEach(platform => {
@@ -11,7 +13,25 @@ export default function solvePlatformCollisions(particles, platforms, velocityLo
 
 function solveCollision(platform, particle) {
   // Response to collision between circle and line
-  // https://stackoverflow.com/questions/1073336/circle-line-collision-detection-algorithm
+
+  // Fake horizontal vector
+  let horizontal = new Vector(5, 0);
+
+  // Get platform rotation angle
+  let rotation = platform.rotation();
+
+  // Rotate the particle velocity 90 + platform rotation degrees
+  let rotatedVelocity = rotate(particle.velocity, rotation);
+
+  particle.velocity = rotatedVelocity;
+  
+}
+
+function rotate(velocity, angle) { // Vector rotation
+  return new Vector(
+    velocity.x * Math.cos(angle) - velocity.y * Math.sin(angle),
+    velocity.x * Math.sin(angle) + velocity.y * Math.cos(angle)
+  )
 }
 
 

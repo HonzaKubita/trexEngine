@@ -16,7 +16,16 @@ body {
   background-color: rgb(134, 134, 134);
   padding: 5px;
   border-radius: 15px;
+  transition: all 0.2s;
 }
+.menu-button:hover, .menu-selector:hover{
+  background-color: rgb(100, 100, 100);
+}
+.menu-button:active {
+  background-color: rgb(44, 44, 44);
+}
+
+
 .console {
   font-family: monospace;
   border: solid 3px rgb(0, 0, 0);
