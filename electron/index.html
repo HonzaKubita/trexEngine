@@ -9,8 +9,7 @@
 </head>
 <body>
   <div class="main-container">
-    <canvas id="canvas" width="480" height="480"></canvas>
-  
+    
     <div>
       <div class="menu-container">
         <button id="addParticle" class="menu-button">Add particle</button>
@@ -51,13 +50,13 @@
       <div class="menu-container">
         <button id="startStopBtn" class="menu-button">Start</button>
         <button id="resetBtn" class="menu-button">Reset</button>
-        <button id="settingsBtn" class="menu-button">Settings</button>
       </div>
-
-
+      
+      
       <hr>
-
-    
+      
+      <button id="settingsBtn" class="menu-button">Settings</button>
+      
       <div id="settings" class="settings-container">
         
         <p>Settings:</p>
@@ -65,20 +64,17 @@
         <!-- Settigns will be inserted here by js -->
     
       </div>
-
-
-      <hr>
-
-
-      <div style="display: flex; flex-direction: column;">
-        <p id="objectType">Nothing selected</p>
-        <div id="objectData">
-        </div>
-        <button id="applyData" class="menu-button" style="display: none;">Apply</button>
-      </div>
-    
-    
     </div>
+    
+    <canvas id="canvas" width="480" height="480"></canvas>
+      
+    <div class="object-data-container">
+      <p id="objectType">Nothing selected</p>
+      <div id="objectData">
+      </div>
+      <button id="applyData" class="menu-button" style="display: none;">Apply</button>
+    </div>
+      
   </div>
 
 

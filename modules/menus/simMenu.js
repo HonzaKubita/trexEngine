@@ -1,7 +1,7 @@
-import { Sim } from '../../sim/sim.js';
+import Sim from '../../sim/sim.js';
 import utils from '../../modules/utils.js';
-import { settings } from '../../modules/settings.js';
-import { dataModifier } from '../dataModifier.js';
+import settings from '../../modules/settings.js';
+import dataModifier from '../dataModifier.js';
 
 let startStopBtn = document.getElementById('startStopBtn');
 let resetSimBtn = document.getElementById('resetBtn');

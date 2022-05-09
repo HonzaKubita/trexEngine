@@ -1,6 +1,6 @@
 import Vector from './vector.js';
-import { textures } from '../modules/textures.js';
-export class Particle {
+import textures from '../modules/textures.js';
+export default class Particle {
   type = 'particle';
   fixed = false;
   position = { // Position in 2D space

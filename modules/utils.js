@@ -1,3 +1,5 @@
+import render from './render.js'
+
 let mode = 'default';
 let clearBtn = document.getElementById('clearConsole');
 let consoleDiv = document.getElementById('output');
@@ -30,8 +32,19 @@ const scrollDown = () => { // Function for auto scrolling down the console
   consoleDiv.scrollTop = consoleDiv.scrollHeight;
 }
 
-function calcDistance(particle1, particle2) {
+const calcDistance = (particle1, particle2) => {
   return Math.sqrt(Math.pow(particle1.x - particle2.x, 2) + Math.pow(particle1.y - particle2.y, 2));
+}
+
+const mousePosition = (canvas, event) => {
+  var rect = canvas.getBoundingClientRect(), // abs. size of element
+    scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for x
+    scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for y
+
+  return {
+    x: (event.clientX - rect.left) * scaleX,   // scale mouse coordinates after they have
+    y: render.canvas.height - ((event.clientY - rect.top) * scaleY)     // been adjusted to be relative to element
+  }
 }
 
 export default {
@@ -39,4 +52,5 @@ export default {
   debug,
   log,
   calcDistance,
+  mousePosition,
 }

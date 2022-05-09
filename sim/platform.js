@@ -1,4 +1,4 @@
-export class Platform {
+export default class Platform {
   type = 'platform';
   position = { // Position in 2D space
     point1: {x: 0, y: 0},

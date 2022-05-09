@@ -1,7 +1,7 @@
-import { Sim } from '../sim/sim.js'
+import Sim from '../sim/sim.js'
 import utils from './utils.js'
-import { render } from './render.js'
-import { dataModifier } from './dataModifier.js'
+import render from './render.js'
+import dataModifier from './dataModifier.js'
 
 export const selector = {
   init(canvas) {
@@ -11,10 +11,7 @@ export const selector = {
         return;
       }
 
-      const mousePosition = { // Put mouse position to variable
-        x: event.clientX,
-        y: canvas.height - event.clientY
-      }
+      const mousePosition = utils.mousePosition(canvas, event);
 
 
       Sim.simObjects.particles.forEach(particle => {

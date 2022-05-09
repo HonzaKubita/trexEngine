@@ -1,7 +1,9 @@
 
-import { Sim } from '../sim/sim.js';
+import Sim from '../sim/sim.js';
 import utils from '../modules/utils.js'
-export class Connection {
+
+// Main connection class
+export default class Connection {
   type = 'connection';
   position = {
     point1: {x: 0, y: 0},

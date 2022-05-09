@@ -1,6 +1,6 @@
-import { Sim } from '../../sim/sim.js';
+import Sim from '../../sim/sim.js';
 import utils from '../../modules/utils.js';
-import { Particle } from '../../sim/particle.js';
+import Particle from '../../sim/particle.js';
 
 export default function particleMenu() {
   let particleSelect = document.getElementById('particleType');

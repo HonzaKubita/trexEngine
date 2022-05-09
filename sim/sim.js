@@ -1,15 +1,18 @@
 import utils from '../modules/utils.js';
-import { settings } from '../modules/settings.js';
-import { render } from '../modules/render.js';
+import settings from '../modules/settings.js';
+import render from '../modules/render.js';
 import Vector from './vector.js';
 
 // Modifiers
 import collisions from './modifiers/collisions.js';
 import gravity from './modifiers/gravity.js';
 import electromagneticForce from './modifiers/electromagneticForce.js';
-import { connectionModifier } from './modifiers/connections.js';
+import connectionModifier from './modifiers/connections.js';
 
-export const Sim = {
+import Sim from './sim.js';
+
+// Sim main object
+export default {
   running: false,
   simObjects: {
     particles: [],

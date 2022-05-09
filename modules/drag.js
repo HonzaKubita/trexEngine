@@ -1,5 +1,5 @@
-import { render } from './render.js';
-import { Sim } from '../sim/sim.js';
+import render from './render.js';
+import Sim from '../sim/sim.js';
 import utils from './utils.js';
 
 export const drag = {
@@ -10,13 +10,11 @@ export const drag = {
         return;
       }
 
-      const mousePosition = { // Put mouse position to variable
-        x: event.clientX,
-        y: render.canvas.height - event.clientY
-      }
+      const mousePosition = utils.mousePosition(canvas, event);
 
       // Detect if left mouse button is pressed
       if (event.which == 1) {
+
         Sim.simObjects.particles.forEach(particle => { // Repeat for each particle
           let particlePosition = particle.position; // Put particle position to variable
           if (utils.calcDistance(particlePosition, mousePosition) < particle.width) { // If mouse is on particle

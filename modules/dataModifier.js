@@ -1,5 +1,5 @@
-import { Sim } from '../sim/sim.js';
-import { render } from './render.js';
+import Sim from '../sim/sim.js';
+import render from './render.js';
 
 const uneditable = ['type', 'width', 'height', 'radius' , 'selected'];
 const dataModifierDiv = document.getElementById('objectData');
@@ -9,7 +9,8 @@ const applyBtn = document.getElementById('applyData');
 
 let newHTML = ''
 
-export const dataModifier = {
+// Main dataModifier object
+export default {
   update() {
 
     dataModifierDiv.innerHTML = '';

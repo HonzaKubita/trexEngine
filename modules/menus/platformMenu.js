@@ -1,6 +1,6 @@
-import { Sim } from '../../sim/sim.js';
+import Sim from '../../sim/sim.js';
 import utils from '../../modules/utils.js';
-import { Platform } from '../../sim/platform.js';
+import Platform from '../../sim/platform.js';
 
 export default function platformMenu() {
   let platformSelect = document.getElementById('platformType');

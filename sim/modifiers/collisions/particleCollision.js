@@ -32,7 +32,19 @@ function rotate(velocity, angle) { // Vector rotation
 }
 
 function solveCollision(particle, otherParticle) { // Solve collision beetween two circle objects
-  let angle = -Math.atan2(otherParticle.position.y - particle.position.y, otherParticle.position.x - particle.position.x);
+  
+  // First fix position of particles
+  
+  let distance = utils.calcDistance(particle.position, otherParticle.position);
+  let difference = (particle.radius + otherParticle.radius) - distance;
+
+  let angle = -Math.atan2(otherParticle.position.y - particle.position.y, otherParticle.position.x - particle.position.x); // We will reuse this var later in response
+  
+  particle.x += Math.cos(angle) * difference;
+  particle.y += Math.sin(angle) * difference;
+
+  // Now we can calculate the velocities of the particles
+
 
   let m1 = particle.mass;
   let m2 = otherParticle.mass;

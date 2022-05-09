@@ -1,8 +1,10 @@
 import utils from './utils.js';
-import { Sim } from '../sim/sim.js';
-import { textures } from './textures.js'
+import Sim from '../sim/sim.js';
+import textures from './textures.js'
+import render from './render.js';
 
-export const render = {
+// Main render object
+export default {
   canvas: "", // Canvas object
   c: "", // Canvas to draw on (context)
   mount(canvasID) { // Mount canvas on page

@@ -1,6 +1,6 @@
-import { Sim } from '../../sim/sim.js';
+import Sim from '../../sim/sim.js';
 import utils from '../../modules/utils.js';
-import { Connection } from '../../sim/connection.js';
+import Connection from '../../sim/connection.js';
 
 export default function connectionMenu() {
   let connectionSelect = document.getElementById('connectionType');

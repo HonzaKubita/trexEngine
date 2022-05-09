@@ -1,5 +1,7 @@
-import { Sim } from '../sim/sim.js';
-export const settings = {
+import Sim from '../sim/sim.js';
+
+// Main settings object
+export default {
   button: document.getElementById('settingsBtn'),
   settingsDiv: document.getElementById('settings'),
 
@@ -21,7 +23,7 @@ export const settings = {
     this.add('Infinite velocity', 'infiniteVelocity', 'checkbox');
     this.add('Electromagnetic force', 'electromagneticForce' , 'checkbox');
     this.add('Gravity', 'gravity', 'checkbox');
-    this.add('Gravity strength', 'gravitystrength', 'number');
+    this.add('Gravity strength', 'gravityStrength', 'number');
     this.add('Particle collisions', 'particleCollisions', 'checkbox');
 
     Sim.data = this.getData();

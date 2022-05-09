@@ -4,7 +4,9 @@ function loadAsset(path) {
   image.src = `./textures/${path}.png`;
   return image;
 }
-export const textures = {
+
+// Main textures object
+export default {
   init() {
     this.particlePositive = loadAsset('particles/particlePositive');
     this.particleNegative = loadAsset('particles/particleNegative');
