@@ -25,8 +25,10 @@ export default {
       this.c.moveTo(object.position.point1.x, canvas.height - object.position.point1.y);
       this.c.lineTo(object.position.point2.x, canvas.height - object.position.point2.y);
       this.c.stroke();
-      this.drawCircle(object.position.point1, 10, object.color);
-      this.drawCircle(object.position.point2, 10, object.color);
+      this.c.rect(object.position.point1.x - 5, canvas.height - object.position.point1.y - 5, 10, 10);
+      this.c.rect(object.position.point2.x - 5, canvas.height - object.position.point2.y - 5, 10, 10);
+      this.c.fill();
+      this.c.stroke();
     } else if (object.type == 'particle') {
       if (object.selected && !Sim.running) {
         this.drawOutline(object);
