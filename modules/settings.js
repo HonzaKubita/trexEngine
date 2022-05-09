@@ -16,7 +16,32 @@ export const settings = {
         this.settingsDiv.style.display = 'none';
       }
     })
+
+    this.add('Show vectors', 'showVectors', 'checkbox');
+    this.add('Infinite velocity', 'infiniteVelocity', 'checkbox');
+    this.add('Electromagnetic force', 'electromagneticForce' , 'checkbox');
+    this.add('Gravity', 'gravity', 'checkbox');
+    this.add('Gravity strength', 'gravitystrength', 'number');
+    this.add('Particle collisions', 'particleCollisions', 'checkbox');
+
     Sim.data = this.getData();
+  },
+  add(text, name, type) {
+    let div = document.createElement('div');
+
+    let input = document.createElement('input');
+    input.setAttribute('type', type);
+    input.setAttribute('name', 'settingsModifier');
+    input.setAttribute('id', name);
+
+    let label = document.createElement('label');
+    label.setAttribute('for', name);
+    label.innerHTML = text;
+
+    div.appendChild(input);
+    div.appendChild(label);
+
+    this.settingsDiv.appendChild(div);
   },
   getData() {
     let data = {};

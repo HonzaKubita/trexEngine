@@ -61,13 +61,6 @@ export const Sim = {
 }
 
 function simLoop() {
-
-  // Solve collisions
-
-  collisions.solveWallCollisions(Sim.simObjects.particles, render.canvas, Sim.velocityLoose); // Solve collisions between particles and walls
-  //collisions.solveParticleCollisions(Sim.simObjects.particles, Sim.velocityLoose)
-  //collisions.solvePlatformCollisions(Sim.simObjects.particles, Sim.simObjects.platforms, Sim.velocityLoose); // Solve collisions between particles and platforms
-  
   
   // Calculate modifiers
   
@@ -76,10 +69,21 @@ function simLoop() {
   }
   
   if (Sim.data.electromagneticForce) { // If electromagnetic force is enabled
-    electromagneticForce(Sim.simObjects, Sim.data.electromagneticForceStrength); // Apply electromagnetic force to all objects
+    electromagneticForce(Sim.simObjects); // Apply electromagnetic force to all objects
   }
   
   connectionModifier(Sim.simObjects); // Apply connection modifier to all particles
+
+
+  // Solve collisions
+
+  collisions.solveWallCollisions(Sim.simObjects.particles, render.canvas, Sim.velocityLoose); // Solve collisions between particles and walls
+  
+  if (Sim.data.particleCollisions) {
+    collisions.solveParticleCollisions(Sim.simObjects.particles)
+  }
+  //collisions.solvePlatformCollisions(Sim.simObjects.particles, Sim.simObjects.platforms, Sim.velocityLoose); // Solve collisions between particles and platforms
+  
   
   // Update
   

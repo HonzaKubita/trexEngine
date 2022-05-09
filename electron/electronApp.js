@@ -30,7 +30,7 @@ class Main {
 		this.mainWindow = new BrowserWindow({
       width: 800, 
       height: 800,
-      icon: __dirname + '/trexEngineLogo.ico',
+      icon: __dirname + '/trexEngineLogo.png',
       webPreferences: {
         nodeIntegration: true
       },

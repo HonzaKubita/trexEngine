@@ -1,6 +1,6 @@
-import stick from './connections/stick.js';
-import rubber from './connections/rubber.js';
-import spring from './connections/spring.js';
+import stick from './connections/stickConection.js';
+import rubber from './connections/rubberConection.js';
+import spring from './connections/springConection.js';
 
 export function connectionModifier(objects) {
   objects.connections.forEach(connection => {

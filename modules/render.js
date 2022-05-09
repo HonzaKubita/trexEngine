@@ -29,8 +29,17 @@ export const render = {
       if (object.selected && !Sim.running) {
         this.drawOutline(object);
       }
+      let texture;
+      if (object.charge == 0) {
+        texture = textures.particleNeutral;
+      } else if (object.charge > 0) {
+        texture = textures.particlePositive;
+      } else if (object.charge < 0) {
+        texture = textures.particleNegative;
+      }
+
       if (mid) {
-        this.c.drawImage(textures[object.charge], object.position.x - object.width / 2, canvas.height - object.position.y - object.height / 2);
+        this.c.drawImage(texture, object.position.x - object.width / 2, canvas.height - object.position.y - object.height / 2);
       } else {
         this.c.drawImage(textures[object.charge], object.position.x, canvas.height - object.position.y);
       }

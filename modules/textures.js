@@ -6,8 +6,8 @@ function loadAsset(path) {
 }
 export const textures = {
   init() {
-    this.e = loadAsset('particles/e');
-    this.p = loadAsset('particles/p');
-    this.n = loadAsset('particles/n');
+    this.particlePositive = loadAsset('particles/particlePositive');
+    this.particleNegative = loadAsset('particles/particleNegative');
+    this.particleNeutral = loadAsset('particles/particleNeutral');
   }
 }

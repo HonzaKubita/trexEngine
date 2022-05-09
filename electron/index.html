@@ -16,9 +16,9 @@
         <button id="addParticle" class="menu-button">Add particle</button>
         <select id="particleType" class="menu-select">
           <option value="type">Charge</option>
-          <option value="e">Negative charge</option>
-          <option value="p">Positive charge</option>
-          <option value="n">Neutral charge</option>
+          <option value="negative">Negative charge</option>
+          <option value="positive">Positive charge</option>
+          <option value="neutral">Neutral charge</option>
         </select>
         <button id="removeParticle" class="menu-button">Remove particle</button>
       </div>
@@ -61,37 +61,9 @@
       <div id="settings" class="settings-container">
         
         <p>Settings:</p>
-        <div>
-          <input type="checkbox" id="electromagneticForce" name="settingsModifier" checked>
-          <label for="electromagneticForce">Electromagnetic force</label>
-        </div>
+
+        <!-- Settigns will be inserted here by js -->
     
-        <div>
-          <input type="number" id="electromagneticForceStrength" name="settingsModifier" value="25" style="width: fit-content;">
-          <label for="electromagneticForceStrength">Electromagnetic force strength</label>
-        </div>
-    
-    
-        <div>
-          <input type="checkbox" id="gravity" name="settingsModifier">
-          <label for="gravity">Gravity</label>
-        </div>
-    
-        <div>
-          <input type="number" id="gravityStrength" name="settingsModifier" value="10" style="width: fit-content;">
-          <label for="gravityStrength">Gravity strength</label>
-        </div>
-    
-    
-        <div>
-          <input type="checkbox" id="showVectors" name="settingsModifier">
-          <label for="showVectors">Show vectors</label>
-        </div>
-    
-        <div>
-          <input type="checkbox" id="infiniteVelocity" name="settingsModifier" checked>
-          <label for="infineteVelocity">Infinite velocity</label>
-        </div>
       </div>
 
 

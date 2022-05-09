@@ -1,7 +1,7 @@
 import { Sim } from '../sim/sim.js';
 import { render } from './render.js';
 
-const uneditable = ['type', 'height', 'width', 'selected'];
+const uneditable = ['type', 'width', 'height', 'radius' , 'selected'];
 const dataModifierDiv = document.getElementById('objectData');
 const objectType = document.getElementById('objectType');
 
@@ -23,7 +23,6 @@ export const dataModifier = {
       if (particle.selected) {
         objectType.innerHTML = 'Particle data:';
         applyBtn.style.display = 'block';
-        console.log(particle)
         for (const property in particle) {
           if (!uneditable.includes(property)) {
             generateDataModifier(particle, property);

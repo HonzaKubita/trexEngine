@@ -9,15 +9,15 @@ export default function particleMenu() {
 
   addParticle.addEventListener('click', () => {
     let particleType = particleSelect.options[particleSelect.selectedIndex].value;
-    if (particleType == 'e') {
+    if (particleType == 'negative') {
       utils.log('Added negatively charged particle');
-      Sim.addObject(new Particle(50, 450, 'e'));
-    } else if (particleType == 'p') {
+      Sim.addObject(new Particle(50, 450, -25));
+    } else if (particleType == 'positive') {
       utils.log('Added positively charged particle');
-      Sim.addObject(new Particle(100, 450, 'p'));
-    } else if (particleType == 'n') {
+      Sim.addObject(new Particle(100, 450, 25));
+    } else if (particleType == 'neutral') {
       utils.log('Added neutrally charged particle');
-      Sim.addObject(new Particle(150, 450, 'n'));
+      Sim.addObject(new Particle(150, 450, 0));
     }
   })
 
