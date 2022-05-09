@@ -1,4 +1,4 @@
-export function solveWallCollisions(particles, enviroment, velocityLoose) {
+export default function solveWallCollisions(particles, enviroment, velocityLoose) {
   velocityLoose = (100 - velocityLoose) / 100; // Convert % to decimal. example: (60% loose = 40% keep => velocity = newVelocity * 0.4)
   particles.forEach(particle => { // Repeat for each particle
     if(particle.position.x - particle.width / 2 < 0) { // If particle is below the ground

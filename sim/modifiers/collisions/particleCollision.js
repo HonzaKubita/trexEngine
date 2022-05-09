@@ -1,7 +1,7 @@
 import utils from '../../../modules/utils.js';
 import Vector from '../../vector.js';
 
-export function solveParticleCollisions(particles) {
+export default function solveParticleCollisions(particles) {
   particles.forEach(particle => { // We don't want to modify data we are currently working with
     particle.saveVelocityToBuffer();
   })

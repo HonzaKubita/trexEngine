@@ -25,6 +25,7 @@ export default {
     this.add('Gravity', 'gravity', 'checkbox');
     this.add('Gravity strength', 'gravityStrength', 'number');
     this.add('Particle collisions', 'particleCollisions', 'checkbox');
+    this.add('Platform collision', 'platformCollisions', 'checkbox');
 
     Sim.data = this.getData();
   },

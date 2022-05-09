@@ -85,8 +85,10 @@ function simLoop() {
   if (Sim.data.particleCollisions) {
     collisions.solveParticleCollisions(Sim.simObjects.particles)
   }
-  //collisions.solvePlatformCollisions(Sim.simObjects.particles, Sim.simObjects.platforms, Sim.velocityLoose); // Solve collisions between particles and platforms
   
+  if (Sim.data.platformCollisions) {
+    collisions.solvePlatformCollisions(Sim.simObjects.particles, Sim.simObjects.platforms); // Solve collisions between particles and platforms
+  }
   
   // Update
   
