@@ -59,7 +59,7 @@ body {
 .console {
   font-family: monospace;
   border: solid 3px rgb(0, 0, 0);
-  margin: 3px;
+  margin: 10px;
   border-radius: 15px;
   height: 100px;
   width: 80%;
@@ -67,13 +67,19 @@ body {
   overflow-wrap: normal;
 }
 .settings-container {
-  display: none;
   flex-direction: column;
   background-color: #3d3d3d;
   padding: 10px;
   border-radius: 15px;
   margin: 4px;
+  max-height: 0px;
+  overflow-y: hidden;
+  transition: all 0.5s;
 }
+.settings-show {
+  max-height: 300px;
+}
+
 .object-data-container {
   display: flex; 
   flex-direction: column;
@@ -81,6 +87,9 @@ body {
   padding: 10px;
   border-radius: 15px;
   margin: 4px;
+  min-width: 250px;
+
+  transition: all 0.5s;
 }
 
 input {
@@ -95,7 +104,7 @@ input {
   border: solid 3px rgb(0, 0, 0);
   border-radius: 15px;
   width: 620px;
-  height: 480px;
+  height: 580px;
 }
 
 .main-container {

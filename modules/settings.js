@@ -12,10 +12,10 @@ export default {
     this.button.addEventListener('click', () => {
       if (this.button.innerHTML == 'Settings') {
         this.button.innerHTML = 'Close';
-        this.settingsDiv.style.display = 'flex';
+        this.settingsDiv.classList.add('settings-show');
       } else {
         this.button.innerHTML = 'Settings';
-        this.settingsDiv.style.display = 'none';
+        this.settingsDiv.classList.remove('settings-show');
       }
     })
 
