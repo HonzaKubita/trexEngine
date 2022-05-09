@@ -25,6 +25,36 @@ body {
   background-color: rgb(44, 44, 44);
 }
 
+.rst-button {
+  background-color: #940000;
+}
+.rst-button:hover {
+  background-color: #7a0c00;
+}
+.rst-button:active {
+  background-color: #5a0900;
+}
+
+.start-button {
+  background-color: #009400;
+}
+.start-button:hover {
+  background-color: #007800;
+}
+.start-button:active {
+  background-color: #005a00;
+}
+
+.pause-button {
+  background-color: #ffd900;
+}
+.pause-button:hover {
+  background-color: #ffb400;
+}
+.pause-button:active {
+  background-color: #ff9000;
+}
+
 
 .console {
   font-family: monospace;

@@ -9,10 +9,12 @@ let resetSimBtn = document.getElementById('resetBtn');
 function startStop() {
   startStopBtn.addEventListener('click', () => {
     if (Sim.running) {
+      startStopBtn.classList.remove('pause-button');
       startStopBtn.innerHTML = 'Resume';
       Sim.stop();
       settings.enable(); // After simulation is started, disable settings menu
     } else {
+      startStopBtn.classList.add('pause-button');
       startStopBtn.innerHTML = 'Pause';
       Sim.start();
       settings.disable();

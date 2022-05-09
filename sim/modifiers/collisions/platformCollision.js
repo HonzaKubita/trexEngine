@@ -18,10 +18,10 @@ function solveCollision(platform, particle) {
   let horizontal = new Vector(5, 0);
 
   // Get platform rotation angle
-  let rotation = platform.rotation();
+  let rotation = platform.angle();
 
   // Rotate the particle velocity 90 + platform rotation degrees
-  let rotatedVelocity = rotate(particle.velocity, rotation);
+  let rotatedVelocity = rotate(particle.velocity, 180 + rotation);
 
   particle.velocity = rotatedVelocity;
   
