@@ -9,7 +9,7 @@ export default class Particle {
   };
   velocity = new Vector(0, 0); // Velocity in 2D space
   velocityBuffer = new Vector(0, 0); // Velocity buffer
-  mass = 100; // Mass of the particle
+  mass = 50; // Mass of the particle
   constructor(x, y, charge) {
     this.charge = charge; // Particle type (neutron/proton/electron)
     this.position.x = x; // Position of the particle in 2D space (x, y)

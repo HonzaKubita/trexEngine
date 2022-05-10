@@ -63,7 +63,10 @@ export default {
   },
 }
 
-function simLoop() {
+async function simLoop() {
+
+  // Render
+  render.renderSim(); // Render simulation
   
   // Calculate modifiers
   
@@ -95,14 +98,13 @@ function simLoop() {
   Sim.simObjects.particles.forEach(particle => {
     particle.update(); // Update particle position
   });
-
-  // Render
-  render.renderSim(); // Render simulation
-
   // Loop
 
   if (Sim.running) {
     // Call simLoop function again to create a loop
+    if (Sim.data.slowmotion) {
+      await utils.delay(100);
+    }
     requestAnimationFrame(simLoop);
   }
 }

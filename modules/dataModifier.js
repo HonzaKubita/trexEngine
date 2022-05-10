@@ -1,7 +1,7 @@
 import Sim from '../sim/sim.js';
 import render from './render.js';
 
-const uneditable = ['type', 'width', 'height', 'radius' , 'selected'];
+const uneditable = ['type', 'width', 'height', 'radius' , 'selected', 'velocityBuffer'];
 const dataModifierDiv = document.getElementById('objectData');
 const objectType = document.getElementById('objectType');
 

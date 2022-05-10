@@ -14,14 +14,17 @@ export default function solvePlatformCollisions(particles, platforms, velocityLo
 function solveCollision(platform, particle) {
   // Response to collision between circle and line
 
+  // Get platform rotation angle
+  let platformRotation = platform.angle();
+  
   // Fake horizontal vector
   let horizontal = new Vector(5, 0);
 
-  // Get platform rotation angle
-  let rotation = platform.angle();
+  // Get particle velocity angle
+  let velocityAngle = particle.velocity.angle(horizontal);
 
   // Rotate the particle velocity 90 + platform rotation degrees
-  let rotatedVelocity = rotate(particle.velocity, 180 + rotation);
+  let rotatedVelocity = rotate(particle.velocity, velocityAngle * 2 + platformRotation);
 
   particle.velocity = rotatedVelocity;
   

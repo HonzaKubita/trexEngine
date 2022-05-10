@@ -47,10 +47,15 @@ const mousePosition = (canvas, event) => {
   }
 }
 
+const delay = async (time) => {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
 export default {
   init,
   debug,
   log,
   calcDistance,
   mousePosition,
+  delay,
 }

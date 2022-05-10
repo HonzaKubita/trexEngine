@@ -43,7 +43,7 @@ function solveCollision(particle, otherParticle) { // Solve collision beetween t
   particle.x += Math.cos(angle) * difference;
   particle.y += Math.sin(angle) * difference;
 
-  // Now we can calculate the velocities of the particles
+  // Now we can calculate the velocity of the particle
 
 
   let m1 = particle.mass;

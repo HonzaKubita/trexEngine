@@ -19,11 +19,14 @@ export default {
       }
     })
 
-    this.add('Show vectors', 'showVectors', 'checkbox');
+    this.add('Slowmotion', 'slowmotion', 'checkbox');
+    this.add('Show velocity vectors', 'showVelocityVectors', 'checkbox');
     this.add('Infinite velocity', 'infiniteVelocity', 'checkbox');
     this.add('Electromagnetic force', 'electromagneticForce' , 'checkbox');
+    this.add('Show electromagnetic force vector', 'electromagneticForceVector', 'checkbox');
     this.add('Gravity', 'gravity', 'checkbox');
     this.add('Gravity strength', 'gravityStrength', 'number');
+    this.add('Show gravity vector', 'showGravityVector', 'checkbox');
     this.add('Particle collisions', 'particleCollisions', 'checkbox');
     this.add('Platform collision', 'platformCollisions', 'checkbox');
 

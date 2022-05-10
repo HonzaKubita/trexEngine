@@ -55,17 +55,17 @@ export default {
       this.draw(object, mid);
     });
   },
-  drawVector(object) {
-    this.c.strokeStyle = '#00ff00';
+  drawVector(position, vector, color) {
+    this.c.strokeStyle = color;
     this.c.lineWidth = 2;
-    let dx = object.position.x + object.velocity.x * 10
-    let dy = canvas.height - object.position.y - object.velocity.y * 10
+    let dx = position.x + vector.x * 10
+    let dy = canvas.height - position.y - vector.y * 10
     this.c.beginPath();
-    this.c.moveTo(object.position.x, canvas.height - object.position.y);
+    this.c.moveTo(position.x, canvas.height - position.y);
     this.c.lineTo(dx, dy);
     this.c.stroke();
     this.c.font = "15px Arial";
-    let speed = object.velocity.magnitude().toString()
+    let speed = vector.magnitude().toString()
     this.c.fillText(speed.slice(0, speed.indexOf('.') + 2), dx, dy);
   },
 
@@ -76,9 +76,15 @@ export default {
     this.drawMultiple(Sim.simObjects.particles, true); // Draw particles
     this.drawMultiple(Sim.simObjects.platforms); // Draw platforms
 
-    if (Sim.data.showVectors) { // If showVectors is enabled
+    if (Sim.data.showVelocityVectors) { // If showVectors is enabled
       Sim.simObjects.particles.forEach(particle => {
-        render.drawVector(particle); // Display particle velocity vector as line
+        render.drawVector(particle.position, particle.velocity, '#00ff00'); // Display particle velocity vector as line
+      });
+    }
+
+    if (Sim.data.showGravityVector && Sim.data.gravity) {
+      Sim.simObjects.particles.forEach(particle => {
+        render.drawVector(particle.position, Sim.gravityForce.multiply(100), '#0000ff'); // Display particle gravity vector as line
       });
     }
 
